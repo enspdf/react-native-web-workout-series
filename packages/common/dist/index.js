@@ -9,29 +9,26 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_native_1 = require("react-native");
-exports.App = function () {
-    var _a = react_1.useState(0), count = _a[0], setCount = _a[1];
+var mobx_react_lite_1 = require("mobx-react-lite");
+var Router_1 = require("./Router");
+var CounterStore_1 = require("./stores/CounterStore");
+exports.App = mobx_react_lite_1.observer(function () {
+    var counterStore = react_1.useContext(CounterStore_1.CounterStoreContext);
     return (react_1.default.createElement(react_native_1.View, { style: styles.container },
-        react_1.default.createElement(react_native_1.Text, { style: styles.welcome }, "Welcome to React Native!"),
-        react_1.default.createElement(react_native_1.Text, { style: styles.instructions }, "To get started, edit App.tsx"),
-        react_1.default.createElement(react_native_1.Text, { style: styles.instructions }, count),
-        react_1.default.createElement(react_native_1.Button, { title: "increment", onPress: function () { return setCount(count + 1); } })));
-};
+        react_1.default.createElement(react_native_1.View, { style: styles.wrapper },
+            react_1.default.createElement(Router_1.Router, null))));
+});
 var styles = react_native_1.StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#F5FCFF"
+        backgroundColor: "#F5FCFF",
+        height: "100%"
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: "center",
-        margin: 10
-    },
-    instructions: {
-        textAlign: "center",
-        color: "#333333",
-        marginBottom: 5
+    wrapper: {
+        backgroundColor: "#F5FCFF",
+        width: "100%",
+        maxWidth: 425
     }
 });
