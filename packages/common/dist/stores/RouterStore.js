@@ -6,15 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = require("react");
 var mobx_1 = require("mobx");
 var RouterStore = /** @class */ (function () {
-    function RouterStore() {
+    function RouterStore(rootStore) {
         this.screen = "WorkoutHistory";
+        this.rootStore = rootStore;
     }
     __decorate([
         mobx_1.observable
     ], RouterStore.prototype, "screen", void 0);
     return RouterStore;
 }());
-exports.RouterStoreContext = react_1.createContext(new RouterStore());
+exports.RouterStore = RouterStore;
