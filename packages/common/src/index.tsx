@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { observer } from "mobx-react-lite";
-import { Router } from "./Router";
+import { Routes } from "./Routes";
 import { CounterStoreContext } from "./stores/CounterStore";
 
 export const App = observer(() => {
@@ -10,7 +10,7 @@ export const App = observer(() => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <Router />
+        <Routes />
       </View>
     </View>
   );
