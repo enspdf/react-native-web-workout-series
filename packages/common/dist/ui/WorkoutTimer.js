@@ -30,7 +30,7 @@ var styles = react_native_1.StyleSheet.create({
         fontSize: 30
     },
     timeText: {
-        color: "#FFF",
+        color: "#fff",
         fontSize: 18
     },
     line: {
@@ -40,6 +40,7 @@ var styles = react_native_1.StyleSheet.create({
 });
 exports.WorkoutTimer = function (_a) {
     var onXPress = _a.onXPress, currentTime = _a.currentTime, percent = _a.percent;
+    console.log(percent);
     return (React.createElement(react_native_1.View, { style: styles.container },
         React.createElement(react_native_1.View, { style: [styles.line, { width: percent }] }),
         React.createElement(react_native_1.View, { style: styles.row },

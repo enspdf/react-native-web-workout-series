@@ -1,10 +1,10 @@
-import * as React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { observer } from "mobx-react-lite";
+import * as React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface Props {
   excercise: string;
-  repsSetsAndWeight: string;
+  repsAndWeight: string;
   sets: string[];
   onSetPress: (index: number) => void;
 }
@@ -12,7 +12,7 @@ interface Props {
 const styles = StyleSheet.create({
   card: {
     borderRadius: 3,
-    backgroundColor: "#FFF",
+    backgroundColor: "#fff",
     shadowColor: "#000",
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.3,
@@ -37,11 +37,10 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderRadius: 25,
-    backgroundColor: "#8FB299",
-    padding: 15
+    backgroundColor: "#8FB299"
   },
   whiteText: {
-    color: "#FFF"
+    color: "#fff"
   },
   circleText: {
     fontSize: 16,
@@ -56,12 +55,12 @@ const styles = StyleSheet.create({
 });
 
 export const WorkoutCard: React.FC<Props> = observer(
-  ({ excercise, repsSetsAndWeight, sets, onSetPress }) => {
+  ({ excercise, repsAndWeight, sets, onSetPress }) => {
     return (
       <View style={styles.card}>
         <View style={styles.topRow}>
           <Text style={styles.topRowText}>{excercise}</Text>
-          <Text style={styles.topRowText}>{repsSetsAndWeight}</Text>
+          <Text style={styles.topRowText}>{repsAndWeight}</Text>
         </View>
         <View style={styles.bottomRow}>
           {sets.map((set, index) => {

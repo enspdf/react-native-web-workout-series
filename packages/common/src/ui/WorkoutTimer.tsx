@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface Props {
   onXPress: () => void;
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   timeText: {
-    color: "#FFF",
+    color: "#fff",
     fontSize: 18
   },
   line: {
@@ -42,6 +42,7 @@ export const WorkoutTimer: React.FC<Props> = ({
   currentTime,
   percent
 }) => {
+  console.log(percent);
   return (
     <View style={styles.container}>
       <View style={[styles.line, { width: percent }]} />

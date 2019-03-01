@@ -7,13 +7,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var mobx_react_lite_1 = require("mobx-react-lite");
 var React = __importStar(require("react"));
 var react_native_1 = require("react-native");
-var mobx_react_lite_1 = require("mobx-react-lite");
 var styles = react_native_1.StyleSheet.create({
     card: {
         borderRadius: 3,
-        backgroundColor: "#FFF",
+        backgroundColor: "#fff",
         shadowColor: "#000",
         shadowOffset: { width: 2, height: 2 },
         shadowOpacity: 0.3,
@@ -38,11 +38,10 @@ var styles = react_native_1.StyleSheet.create({
         height: 50,
         width: 50,
         borderRadius: 25,
-        backgroundColor: "#8FB299",
-        padding: 15
+        backgroundColor: "#8FB299"
     },
     whiteText: {
-        color: "#FFF"
+        color: "#fff"
     },
     circleText: {
         fontSize: 16,
@@ -56,11 +55,11 @@ var styles = react_native_1.StyleSheet.create({
     }
 });
 exports.WorkoutCard = mobx_react_lite_1.observer(function (_a) {
-    var excercise = _a.excercise, repsSetsAndWeight = _a.repsSetsAndWeight, sets = _a.sets, onSetPress = _a.onSetPress;
+    var excercise = _a.excercise, repsAndWeight = _a.repsAndWeight, sets = _a.sets, onSetPress = _a.onSetPress;
     return (React.createElement(react_native_1.View, { style: styles.card },
         React.createElement(react_native_1.View, { style: styles.topRow },
             React.createElement(react_native_1.Text, { style: styles.topRowText }, excercise),
-            React.createElement(react_native_1.Text, { style: styles.topRowText }, repsSetsAndWeight)),
+            React.createElement(react_native_1.Text, { style: styles.topRowText }, repsAndWeight)),
         React.createElement(react_native_1.View, { style: styles.bottomRow }, sets.map(function (set, index) {
             if (set === "x") {
                 return (React.createElement(react_native_1.View, { style: [styles.circle, styles.fadedBackground], key: set + index },

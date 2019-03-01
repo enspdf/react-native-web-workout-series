@@ -1,8 +1,8 @@
+import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
-import { WorkoutCard } from "../ui/WorkoutCard";
-import { observer } from "mobx-react-lite";
 import { RootStoreContext } from "../stores/RootStore";
+import { WorkoutCard } from "../ui/WorkoutCard";
 import { WorkoutTimer } from "../ui/WorkoutTimer";
 
 interface Props {}
@@ -10,7 +10,7 @@ interface Props {}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FAFAFA",
+    backgroundColor: "#fafafa",
     padding: 10
   }
 });
@@ -18,38 +18,37 @@ const styles = StyleSheet.create({
 export const CurrentWorkout: React.FC<Props> = observer(() => {
   const rootStore = React.useContext(RootStoreContext);
   React.useEffect(() => {
-    return rootStore.workoutTimerStore.stopTimer();
+    return () => {
+      rootStore.workoutTimerStore.stopTimer();
+    };
   }, []);
 
   return (
     <View style={styles.container}>
-      {rootStore.workoutStore.currentExercises.map(exercise => {
+      {rootStore.workoutStore.currentExercises.map(e => {
         return (
           <WorkoutCard
             onSetPress={setIndex => {
               rootStore.workoutTimerStore.startTimer();
-
-              const value = exercise.sets[setIndex];
+              const v = e.sets[setIndex];
 
               let newValue: string;
 
-              if (value === "") {
-                newValue = `${exercise.reps}`;
-              } else if (value === "0") {
+              if (v === "") {
+                newValue = `${e.reps}`;
+              } else if (v === "0") {
                 rootStore.workoutTimerStore.stopTimer();
                 newValue = "";
               } else {
-                newValue = `${parseInt(value) - 1}`;
+                newValue = `${parseInt(v) - 1}`;
               }
 
-              exercise.sets[setIndex] = newValue;
+              e.sets[setIndex] = newValue;
             }}
-            key={exercise.excercise}
-            sets={exercise.sets}
-            excercise={exercise.excercise}
-            repsSetsAndWeight={`${exercise.numSets}x${exercise.reps} ${
-              exercise.weight
-            }`}
+            key={e.exercise}
+            sets={e.sets}
+            excercise={e.exercise}
+            repsAndWeight={`${e.numSets}x${e.reps} ${e.weight}`}
           />
         );
       })}

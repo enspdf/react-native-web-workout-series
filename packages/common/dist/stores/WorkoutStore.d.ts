@@ -6,11 +6,11 @@ interface WorkoutHistory {
         value: number;
     }>;
 }
-interface CurrentExercises {
+interface CurrentExcercise {
     weight: number;
     reps: number;
     numSets: number;
-    excercise: string;
+    exercise: string;
     sets: string[];
 }
 export declare class WorkoutStore {
@@ -22,7 +22,7 @@ export declare class WorkoutStore {
     currentDeadlift: number;
     currentBarbellRow: number;
     lastWorkoutType: WorkoutDay;
-    currentExercises: CurrentExercises[];
+    currentExercises: CurrentExcercise[];
     history: WorkoutHistory;
 }
 export {};
