@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
-import { WorkoutHistory } from "./modules/WorkoutHistory";
+import React from "react";
 import { CurrentWorkout } from "./modules/CurrentWorkout";
-import { RootStoreContext } from "./stores/RootStore";
-import { Router, Switch, Route } from "./Router/index";
+import { WorkoutHistory } from "./modules/WorkoutHistory";
+import { Route, Router, Switch } from "./Router/index";
 
 export const Routes = () => {
-  const rootStore = useContext(RootStoreContext);
-
   return (
     <Router>
       <Switch>
