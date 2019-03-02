@@ -11,9 +11,26 @@ var mobx_react_lite_1 = require("mobx-react-lite");
 var React = __importStar(require("react"));
 var react_native_1 = require("react-native");
 var RootStore_1 = require("../stores/RootStore");
+var HistoryCard_1 = require("../ui/HistoryCard");
+var styles = react_native_1.StyleSheet.create({
+    row: {
+        flexDirection: "row"
+    }
+});
 exports.WorkoutHistory = mobx_react_lite_1.observer(function (_a) {
     var history = _a.history;
     var rootStore = React.useContext(RootStore_1.RootStoreContext);
+    var rows = [];
+    Object.entries(rootStore.workoutStore.history).forEach(function (_a, i) {
+        var dt = _a[0], v = _a[1];
+        var historyCard = (React.createElement(HistoryCard_1.HistoryCard, { key: dt, header: dt, currentExercises: v }));
+        if (i % 2 === 0) {
+            rows.push([historyCard]);
+        }
+        else {
+            rows[rows.length - 1].push(historyCard);
+        }
+    });
     return (React.createElement(react_native_1.View, null,
         React.createElement(react_native_1.Text, null, "Workout History page"),
         React.createElement(react_native_1.Button, { title: "create workout", onPress: function () {
@@ -37,5 +54,6 @@ exports.WorkoutHistory = mobx_react_lite_1.observer(function (_a) {
                     weight: 360
                 });
                 history.push("/current-workout");
-            } })));
+            } }),
+        rows.map(function (row, index) { return (React.createElement(react_native_1.View, { style: styles.row, key: index }, row)); })));
 });
