@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Card } from "./Card";
-import { CurrentExcercise } from "../stores/WorkoutStore";
 import { Text } from "react-native";
+import { CurrentExcercise } from "../stores/WorkoutStore";
+import { Card } from "./Card";
 
 interface Props {
   header: string;
   currentExercises: CurrentExcercise[];
+  onPress: () => void;
 }
 
 const exerciseShortName = {
@@ -16,9 +17,13 @@ const exerciseShortName = {
   "Barbell Row": "ROW"
 };
 
-export const HistoryCard: React.FC<Props> = ({ header, currentExercises }) => {
+export const HistoryCard: React.FC<Props> = ({
+  header,
+  currentExercises,
+  onPress
+}) => {
   return (
-    <Card>
+    <Card onPress={onPress}>
       <Text>{header}</Text>
       {currentExercises.map(ce => {
         return (
