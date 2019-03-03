@@ -20,6 +20,7 @@ export declare class WorkoutStore {
     currentBarbellRow: number;
     lastWorkoutType: WorkoutDay;
     currentExercises: CurrentExcercise[];
+    readonly hasCurrentWorkout: boolean;
     history: WorkoutHistory;
 }
 export {};
